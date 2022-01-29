@@ -38,6 +38,18 @@ export default {
       );
     },
   },
+  filters: {
+    toUppercase(value) {
+      return value.toString().toUpperCase();
+    },
+  },
+  directives: {
+    rainbow: {
+      bind(el, binding, vnode) {
+        el.style.color = "#" + Math.random().toString().slice(2, 8);
+      },
+    },
+  },
 };
 </script>
 <style>
