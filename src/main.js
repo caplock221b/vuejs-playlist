@@ -34,6 +34,20 @@ Vue.directive("theme", {
   }
 });
 
+// Filters
+Vue.filter("toUppercase", function(value) {
+  return value.toString().toUpperCase();
+});
+
+Vue.filter("shorten", value => {
+  return (
+    value
+      .toString()
+      .trim()
+      .slice(0, 100) + "..."
+  );
+});
+
 new Vue({
   el: "#app",
   render: h => h(App)
