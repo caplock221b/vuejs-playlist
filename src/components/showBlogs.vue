@@ -1,7 +1,8 @@
 <template>
   <div v-theme:column="'narrow'" id="show-blogs">
     <h1>All Blog Articles</h1>
-    <div v-for="blog in blogs" :key="blog.id" class="single-blog">
+    <input type="text" v-model="search" placeholder="Search blogs..." />
+    <div v-for="blog in filteredBlogs" :key="blog.id" class="single-blog">
       <h2 v-rainbow>{{ blog.title | toUppercase }}</h2>
       <article>{{ blog.body | shorten }}</article>
     </div>
@@ -9,10 +10,13 @@
 </template>
 
 <script>
+// Filters - toUppercase, shorten
+// Custom Directives - v-theme, v-rainbow
 export default {
   data() {
     return {
       blogs: [],
+      search: "",
     };
   },
   methods: {},
@@ -25,6 +29,14 @@ export default {
       .catch((err) => {
         console.log(err);
       });
+  },
+  computed: {
+    filteredBlogs() {
+      return this.blogs.filter(
+        (item) =>
+          item.body.includes(this.search) || item.title.includes(this.search)
+      );
+    },
   },
 };
 </script>

@@ -77,7 +77,7 @@ export default {
 };
 </script>
 
-<style scoped>
+<style>
 #add-blog * {
   box-sizing: border-box;
 }
