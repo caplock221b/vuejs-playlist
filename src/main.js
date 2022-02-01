@@ -1,12 +1,20 @@
 import Vue from "vue";
 import App from "./App.vue";
 import VueResource from "vue-resource";
-
+import VueRouter from "vue-router";
+import routes from "./routes";
 // Create eventBus
 // export const eventBus = new Vue();
 
 // Use VueResource for HTTP request
 Vue.use(VueResource);
+
+// Use VueRouter from routing
+Vue.use(VueRouter);
+
+const router = new VueRouter({
+  routes: routes
+});
 
 // Custom Directive
 Vue.directive("theme", {
@@ -35,5 +43,6 @@ Vue.filter("shorten", value => {
 
 new Vue({
   el: "#app",
-  render: h => h(App)
+  render: h => h(App),
+  router: router
 });
