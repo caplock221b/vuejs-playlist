@@ -3,6 +3,7 @@ import App from "./App.vue";
 import VueResource from "vue-resource";
 import VueRouter from "vue-router";
 import routes from "./routes";
+
 // Create eventBus
 // export const eventBus = new Vue();
 
